@@ -5,6 +5,8 @@ public class RegularMember {
     private double totalSpending;
     private String payMethod; // pay method is new addition...
     private boolean isPremiumMember;
+    private double bookstoreBalance = 0;
+
 
     public RegularMember(String firstName, String lastName, double totalSpending, String payMethod) {
         this.firstName = firstName;
@@ -57,8 +59,15 @@ public class RegularMember {
         if (isPremium) {
             isPremiumMember = true;
         }
-        else if (!isPremium) {
+        else {
             isPremiumMember = false;
         }
+    }
+
+    public double getBookstoreBalance() {
+        return bookstoreBalance;
+    }
+    public void setBookstoreBalance(double bookstoreProfit) {
+        this.bookstoreBalance = bookstoreProfit + bookstoreBalance;
     }
 }
