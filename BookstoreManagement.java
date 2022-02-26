@@ -234,13 +234,11 @@ public class BookstoreManagement {
                 if (p.getIsPremiumMember() == true) {
                     System.out.println("Given customer's premium membership the amount is now: $" + (finalOrder.getPurchaseTotal(booksPurchased, cdsPurchased, dvdsPurchased) * .6));
                     tempStoreBalance = (finalOrder.getPurchaseTotal(booksPurchased, cdsPurchased, dvdsPurchased) * .6) + bookstoreBalance;
-                    // p.setBookstoreBalance(tempStoreBalance);
                     p.setTotalSpending(tempStoreBalance);
                 }
                 else if (p.getIsPremiumMember() == false) {
                     System.out.println("Given customer's regular membership the amount is now: $" + (finalOrder.getPurchaseTotal(booksPurchased, cdsPurchased, dvdsPurchased) * .85));
                     tempStoreBalance = bookstoreBalance + (finalOrder.getPurchaseTotal(booksPurchased, cdsPurchased, dvdsPurchased) * .85);
-                    // p.setBookstoreBalance(tempStoreBalance);
                     p.setTotalSpending(tempStoreBalance);
                 }
 
@@ -305,10 +303,9 @@ public class BookstoreManagement {
                 }
                 for (int i = 0; i < prem.size(); i++) {
                     for (int j = i + 1; j < prem.size(); j++) {
-                    System.out.println("The bookstore's current balance is $" + prem.get(i).getTotalSpending() + prem.get(j).getTotalSpending());
+                    System.out.println("The bookstore's current balance is $" + (double)(prem.get(i).getTotalSpending() + prem.get(j).getTotalSpending()));
                     }
                 }
-                // stores last value issue: fix
                 choiceComplete = true;
             }
 
