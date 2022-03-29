@@ -1,17 +1,32 @@
-public class Inventory {
-    private int stockSize;
-    private double productPrice;
-    private double totalPurchasePrice;
-    private double totalBookPrice;
-    private double totalCDPrice;
-    private double totalDVDPrice;
-    private double bookstoreBalance = 0;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package bookstoremanagementproject1;
 
-    public Inventory(int productPrice, int stockSize) {
-        this.productPrice = productPrice;
-        this.stockSize = stockSize;
-    }
+/**
+ *
+ * @author Paydreanne E. Hinton
+ * instructor Professor Van Custodio
+ * courseSection ITSC1213-106-27949
+ * Bookstore Management Project 1
+ * Stores methods regarding inventory of Bookstore Management System
+ */
+interface prodDisplay {
+    public abstract void productDisplay();
+}
+
+public abstract class Inventory {
+    protected int stockSize = ((int)(5 + Math.random() * 15));
+    protected double productPrice = ((double)(8 + Math.random() * 20));
+    protected double totalProductPrice;
+
     public Inventory() {}
+    public Inventory(int stockSize, double productPrice) {
+        this.stockSize = stockSize;
+        this.productPrice = productPrice;
+    }
+
     public int getStockSize() {
         return stockSize;
     }
@@ -21,53 +36,17 @@ public class Inventory {
     public double getProductPrice() {
         return productPrice;
     }
-    public void setProductPrice(int productPrice) {
+    public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
     }
-
-    // Books price total
-    public double getTotalBookPrice() {
-        return totalBookPrice;
-    }
-    public void setTotalBookPrice(int numBooks) {
-        this.totalBookPrice = (7 * numBooks);
-    }
-
-    // CD price total
-    public double getTotalCDPrice() {
-        return totalCDPrice;
-    }
-    public void setTotalCDPrice(int numCDs) {
-        this.totalCDPrice = (12 * numCDs);
-    }
-
-    // DVD price total
-    public double getTotalDVDPrice() {
-        return totalDVDPrice;
-    }
-    public void setTotalDVDPrice (int numDVDs) {
-        this.totalDVDPrice = (18 * numDVDs);
-    }
-
-    public double getPurchaseTotal(int numBooks, int numCDs, int numDVDs) {
-        this.totalPurchasePrice = (7 * numBooks) + (12 * numCDs) + (18 * numDVDs);
-        return totalPurchasePrice;
-    }
-    public void setPurchaseTotal(double totalPurchasePrice) {
-        this.totalPurchasePrice = totalPurchasePrice;
-    }
-
     public void deductStockSize (int productsSold) {
         this.stockSize = stockSize - productsSold;
     }
-    public void setTotalPurchasePrice(int numBooks, int numCDs, int numDVDs) {
-        System.out.println((7 * numBooks) + (12 * numCDs) + (18 * numDVDs));
+    public void setTotalPurchasePrice (int productsBought) {
+        this.totalProductPrice = getProductPrice() * productsBought; // could be problem area
     }
-
-    public double getBookstoreBalance() {
-        return bookstoreBalance;
-    }
-    public void setBookstoreBalance(double bookstoreProfit) {
-        this.bookstoreBalance = bookstoreProfit + bookstoreBalance;
+    public double getTotalPurchasePrice () {
+        return totalProductPrice;
     }
 }
+
