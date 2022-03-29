@@ -1,20 +1,40 @@
-import java.util.*;
-public class RegularMember {
-    private String firstName;
-    private String lastName;
-    private double totalSpending;
-    private String payMethod; // pay method is new addition...
-    private boolean isPremiumMember;
-    private double bookstoreBalance = 0;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package bookstoremanagementproject1;
 
+/**
+ *
+ * @author Paydreanne E. Hinton
+ * instructor Professor Van Custodio
+ * courseSection ITSC1213-106-27949
+ * Bookstore Management Project 1
+ * Stores methods regarding members of Bookstore Management System
+ */
+interface displayzz {
+    public abstract void display();
+}
 
-    public RegularMember(String firstName, String lastName, double totalSpending, String payMethod) {
+public abstract class Membership {
+    // protected instance variables
+    protected String firstName;
+    protected String lastName;
+    protected double totalSpending;
+    protected String payMethod; 
+    protected boolean isPremiumMember;
+    protected boolean hasPaidPremium;
+    protected double bookstoreBalance = 0;
+
+    public Membership(String firstName, String lastName, double totalSpending, String payMethod, boolean isPremiumMember, boolean hasPaidPremium) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.totalSpending = totalSpending;
         this.payMethod = payMethod;
+        this.isPremiumMember = isPremiumMember;
+        this.hasPaidPremium = hasPaidPremium;
     }
-    public RegularMember() {}
+    public Membership() {}
     public String getFirstName() { 
         return firstName; 
     }
@@ -40,18 +60,6 @@ public class RegularMember {
         this.payMethod = payMethod;
     }
 
-    public void updateTotalSpent(double totalSpending) {
-        this.totalSpending += totalSpending;
-    }
-    public void totalSpent(int booksBought, int CDsBought, int DVDsBought) {
-        System.out.println("This member has spent a total of $" + totalSpending + " at the bookstore.");
-    }
-    public void receiptsTotal (int booksBought, int CDsBought, int DVDsBought) {
-        System.out.println("The customer bought " + booksBought + " books for a total cost of $" + (7 * totalSpending));
-        System.out.println("The customer bought " + CDsBought + " books for a total cost of $" + (12 * totalSpending));
-        System.out.println("The customer bought " + DVDsBought + " books for a total cost of $" + (18 * totalSpending));
-    }
-
     public boolean getIsPremiumMember() {
         return isPremiumMember;
     }
@@ -63,6 +71,12 @@ public class RegularMember {
             isPremiumMember = false;
         }
     }
+    public boolean getHasPaidPremium() {
+        return hasPaidPremium;
+    }
+    public void setHasPaidPremium(boolean hasPaidPremium) {
+        this.hasPaidPremium = hasPaidPremium;
+    }
 
     public double getBookstoreBalance() {
         return bookstoreBalance;
@@ -71,3 +85,4 @@ public class RegularMember {
         this.bookstoreBalance = bookstoreProfit + bookstoreBalance;
     }
 }
+
